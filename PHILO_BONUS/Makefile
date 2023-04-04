@@ -11,7 +11,7 @@ SRCS_PATH = ./
 SRCS_NAME = \
 	main.c \
 	ft_atoi.c \
-	timestamp.c 
+	utils.c 
 
 B_OBJS_NAME = $(SRCS_NAME:.c=.o)
 
@@ -29,7 +29,7 @@ clean :
 	@rm -f $(B_OBJS)
 
 fclean : clean
-	@rm  $(NAME)
+	@rm -f $(NAME)
 
 re : fclean all
 

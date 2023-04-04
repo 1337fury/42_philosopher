@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:26:19 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/03/31 01:58:39 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:49:02 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void		waiting(long long time);
 long long	current_time(void);
 int			init_all(t_args **args, t_list **list, char **av);
 int			crt_launch(t_list *list, t_args *args);
+int			check_death(t_list *list, t_args *args);
 void		ft_lstclear(t_philo **philo, int n_philos);
 void		destroy(t_list **philos, t_args *args);
 

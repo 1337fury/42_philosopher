@@ -17,6 +17,7 @@ M_SRCS_NAME = \
 	launch.c \
 	init.c \
 	utils.c \
+	checker.c \
 	lst_clear.c \
 	destroy.c
 	
