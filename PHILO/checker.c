@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 15:47:57 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/03/31 15:48:43 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/04/05 02:37:57 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ int	check_death(t_list *list, t_args *args)
 			if ((current_time() - curr->last_meal_time) > curr->args->t_die)
 			{
 				args->sim_over = true;
+				// usleep(1000);
 				put_msg(curr, "is died");
 				return (EXIT_FAILURE);
 			}

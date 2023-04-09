@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 02:33:50 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/04/04 16:46:59 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/04/05 02:11:55 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void	routine(t_philo *philo)
 	philo->starting_t = b_current_time();
 	while (true)
 	{
-		// if (philo->args->sim_over)
-		// 	return (NULL);
+		if (philo->args->sim_over)
+			return ;
 		start_eat(philo);
 		start_sleep(philo);
 		start_think(philo);
@@ -102,6 +102,9 @@ void	*checker(void *arg)
 		if (b_current_time() - philo->last_meal_time > philo->args->t_die)
 		{
 			put_msg(philo, "is died");
+			philo->args->sim_over = true;
+			sem_post(philo->args->semaphores->death);
+			sem_post(philo->args->semaphores->status);
 			return (NULL);
 		}
 		sem_post(philo->args->semaphores->status);
@@ -142,9 +145,10 @@ void	create_philosophers(t_args *args)
 	pid_t	pid;
 
 	i = -1;
-	args->childs = (pid_t *)malloc(sizeof(pid_t));
+	args->childs = (pid_t *)malloc(sizeof(pid_t) * args->n_philos);
 	if (!args->childs)
 		p_error();
+	sem_wait(args->semaphores->death);
 	while (++i < args->n_philos)
 	{
 		pid = fork();
@@ -155,8 +159,7 @@ void	create_philosophers(t_args *args)
 			creator(args, i);
 			exit(EXIT_SUCCESS);	
 		}
-		else if (pid > 0)
-			args->childs[i] = pid;
+		args->childs[i] = pid;
 	}
 }
 
@@ -165,12 +168,14 @@ void	create_forks(t_args *args)
 	sem_unlink("forks");
 	sem_unlink("status");
 	sem_unlink("print_lock");
+	sem_unlink("death");
 	args->semaphores = (t_sem *)malloc(sizeof(t_sem));
 	if (!args->semaphores)
 		p_error();
-	args->semaphores->forks = sem_open("forks", O_CREAT | O_EXCL, 0644, args->n_philos);
-	args->semaphores->status = sem_open("status", O_CREAT | O_EXCL, 0644, 1);
-	args->semaphores->print_lock = sem_open("print_lock", O_CREAT | O_EXCL, 0644, 1);
+	args->semaphores->forks = sem_open("forks", O_CREAT, 0644, args->n_philos);
+	args->semaphores->status = sem_open("status", O_CREAT, 0644, 1);
+	args->semaphores->print_lock = sem_open("print_lock", O_CREAT, 0644, 1);
+	args->semaphores->death = sem_open("death", O_CREAT, 0644, 1);
 }
 
 int	b_init(t_args **args, char **av)
@@ -186,7 +191,23 @@ int	b_init(t_args **args, char **av)
 		(*args)->l_meal = ft_atoi(av[5]);
 	else
 		(*args)->l_meal = -1;
-	// pthread_mutex_init(&(*args)->st, NULL);
+	(*args)->sim_over = false;
+	return (EXIT_SUCCESS);
+}
+
+int	kill_childs(int *pids, int N)
+{
+	int	i;
+	int	result;
+
+	i = 0;
+	while(i < N)
+	{
+		result = kill(pids[i], SIGTERM);
+		if (result)
+			return (EXIT_FAILURE);
+		i++;
+	}
 	return (EXIT_SUCCESS);
 }
 
@@ -200,6 +221,8 @@ int main(int ac, char **av)
 	b_init(&arguments, av);
 	create_forks(arguments);
 	create_philosophers(arguments);
+	sem_wait(arguments->semaphores->death);
+	kill_childs(arguments->childs, arguments->n_philos);
 	wait_process(arguments);
 	return (EXIT_SUCCESS);
 }
