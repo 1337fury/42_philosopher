@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:17:07 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/03/31 01:52:28 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/04/11 03:09:35 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	*philo_routine(void *arg)
 
 	philo = (t_philo *)arg;
 	philo->starting_t = current_time();
-	while (true) 
+	while (true)
 	{
 		if (philo->args->sim_over)
 			return (NULL);

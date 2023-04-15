@@ -11,7 +11,12 @@ SRCS_PATH = ./
 SRCS_NAME = \
 	main.c \
 	ft_atoi.c \
-	utils.c 
+	utils.c \
+	philo_routine.c \
+	init.c \
+	create_all.c \
+	wait_kill.c \
+	errors.c
 
 B_OBJS_NAME = $(SRCS_NAME:.c=.o)
 

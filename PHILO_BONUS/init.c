@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/24 19:41:28 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/04/10 17:35:17 by abdeel-o         ###   ########.fr       */
+/*   Created: 2023/04/14 18:03:19 by abdeel-o          #+#    #+#             */
+/*   Updated: 2023/04/14 18:03:42 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
-int	main(int ac, char **av)
+int	b_init(t_args **args, char **av)
 {
-	t_args		*arguments;
-	t_list		*list;
-
-	if ((ac != 6 && ac != 5))
+	*args = (t_args *)malloc(sizeof(t_args));
+	if (!(*args))
 		return (EXIT_FAILURE);
-	list = NULL;
-	arguments = NULL;
-	if (init_all(&arguments, &list, av))
-		return (EXIT_FAILURE);
-	if (crt_launch(list, arguments))
-	{
-		destroy(&list, arguments);
-		return (EXIT_FAILURE);
-	}
-	check_death(list, arguments);
-	destroy(&list, arguments);
+	(*args)->n_philos = ft_atoi(av[1]);
+	(*args)->t_die = ft_atoi(av[2]);
+	(*args)->t_eat = ft_atoi(av[3]);
+	(*args)->t_sleep = ft_atoi(av[4]);
+	if (av[5])
+		(*args)->l_meal = ft_atoi(av[5]);
+	else
+		(*args)->l_meal = -1;
+	(*args)->sim_over = false;
 	return (EXIT_SUCCESS);
 }

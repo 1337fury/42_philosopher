@@ -1,32 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_clear.c                                        :+:      :+:    :+:   */
+/*   errors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/11 03:08:36 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/04/11 03:08:37 by abdeel-o         ###   ########.fr       */
+/*   Created: 2023/04/14 18:10:49 by abdeel-o          #+#    #+#             */
+/*   Updated: 2023/04/14 18:11:08 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "philo_bonus.h"
 
-void	ft_lstclear(t_philo **philo, int n_philos)
+void	p_error()
 {
-	t_philo	*curr;
-	t_philo	*next;
-	int		i;
-
-	if (!philo)
-		return ;
-	curr = *philo;
-	i = -1;
-	while (curr && ++i < n_philos)
-	{
-		next = curr->next;
-		free(curr);
-		curr = next;
-	}
-	*philo = NULL;
+	printf("Error\n");
 }

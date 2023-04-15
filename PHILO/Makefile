@@ -19,7 +19,8 @@ M_SRCS_NAME = \
 	utils.c \
 	checker.c \
 	lst_clear.c \
-	destroy.c
+	destroy.c \
+	print_error.c
 	
 M_OBJS_NAME = $(M_SRCS_NAME:.c=.o)
 

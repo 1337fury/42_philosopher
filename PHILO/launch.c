@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:16:32 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/03/31 01:43:45 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/04/10 17:24:02 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int	crt_launch(t_list *list, t_args *args)
 	while (curr && ++i < args->n_philos)
 	{
 		curr->last_meal_time = current_time();
-		pthread_create(&curr->philo, NULL, philo_routine, (t_philo *)curr);
+		if (pthread_create(&curr->philo, NULL, philo_routine, (t_philo *)curr))
+			return (EXIT_FAILURE);
 		pthread_detach(curr->philo);
 		curr = curr->next;
 	}

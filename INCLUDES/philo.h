@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:26:19 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/03/31 15:49:02 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/04/10 17:45:03 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <stdbool.h>
 
+#define ARGS 0
 
 typedef struct g_args
 {
@@ -63,5 +64,6 @@ int			crt_launch(t_list *list, t_args *args);
 int			check_death(t_list *list, t_args *args);
 void		ft_lstclear(t_philo **philo, int n_philos);
 void		destroy(t_list **philos, t_args *args);
+int			print_error(void *memory);
 
 #endif

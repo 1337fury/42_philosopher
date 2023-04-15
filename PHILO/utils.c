@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:17:00 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/03/31 01:40:07 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/04/11 03:11:30 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,10 @@ void	waiting(long long time)
 
 void	put_msg(t_philo *philo, char *status)
 {
-	long long curr_t;
-	
+	long long	curr_t;
+
 	curr_t = current_time();
 	pthread_mutex_lock(&philo->args->prnt_protect);
-	printf("%lld %d %s\n",(curr_t - philo->starting_t), philo->id, status);
+	printf("%lld %d %s\n", (curr_t - philo->starting_t), philo->id, status);
 	pthread_mutex_unlock(&philo->args->prnt_protect);
 }

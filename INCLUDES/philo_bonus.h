@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 02:35:36 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/04/05 01:34:45 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/04/14 18:14:10 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 typedef struct s_sem
 {
 	sem_t	*forks;
-	sem_t	*status;
-	sem_t	*print_lock;
+	sem_t	*print;
+	sem_t	*last_meal;
 	sem_t	*death;
 }	t_sem;
 
@@ -57,5 +57,16 @@ typedef struct g_philo
 }	t_philo;
 
 int	ft_atoi(const char *str);
+long long	current_time(void);
+long long	b_current_time(void);
+void	waiting(long long time);
+void	put_msg(t_philo *philo, char *status);
+void	routine(t_philo *philo);
+int	b_init(t_args **args, char **av);
+void	create_forks(t_args *args);
+void	create_philosophers(t_args *args);
+int	kill_childs(int *pids, int N);
+void	wait_process(t_args	*arguments);
+void	p_error();
 
 #endif
