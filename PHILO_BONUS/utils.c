@@ -6,11 +6,47 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 19:20:19 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/04/14 17:59:32 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/05/09 11:43:47 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo_bonus.h"
+
+// void	free_tab(char **tab)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	if (tab)
+// 	{
+// 		while (tab[i])
+// 			free(tab[i++]);
+// 		free(tab);
+// 	}
+// }
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	if (!s1 || !s2)
+		return (0);
+	while (1)
+	{
+		if (s1[i] != s2[i])
+			return (0);
+		if (s1[i] == '\0' || s2[i] == '\0')
+		{
+			if (s1[i] == '\0' && s2[i] == '\0')
+				return (1);
+			else
+				return (0);
+		}
+		i++;
+	}
+	return (0);
+}
 
 long long	current_time(void)
 {

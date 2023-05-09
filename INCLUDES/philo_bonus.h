@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 02:35:36 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/04/14 18:14:10 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/05/09 10:58:03 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,11 @@ void	waiting(long long time);
 void	put_msg(t_philo *philo, char *status);
 void	routine(t_philo *philo);
 int	b_init(t_args **args, char **av);
-void	create_forks(t_args *args);
-void	create_philosophers(t_args *args);
+int	create_forks(t_args *args);
+int	create_philosophers(t_args *args, t_philo *philo);
 int	kill_childs(int *pids, int N);
 void	wait_process(t_args	*arguments);
+// void	free_tab(char **tab);
 void	p_error();
 
 #endif

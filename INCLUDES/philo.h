@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 19:26:19 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/04/10 17:45:03 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/05/08 15:57:57 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,3 +67,4 @@ void		destroy(t_list **philos, t_args *args);
 int			print_error(void *memory);
 
 #endif
+
