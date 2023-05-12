@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 18:01:43 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/04/14 18:33:11 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/05/12 19:41:52 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,20 @@
 
 void	start_eat(t_philo *philo)
 {
-	sem_wait(philo->args->semaphores->forks);
+	sem_wait(philo->args->sm->forks);
 	put_msg(philo, "has taken a fork");
-	sem_wait(philo->args->semaphores->forks);
+	sem_wait(philo->args->sm->forks);
 	put_msg(philo, "has taken a fork");
 
-	sem_wait(philo->args->semaphores->last_meal);
+	sem_wait(philo->args->sm->last_meal);
 	philo->last_meal_time = b_current_time();
-	sem_post(philo->args->semaphores->last_meal);
+	sem_post(philo->args->sm->last_meal);
 
 	put_msg(philo, "is eating");
 	waiting(philo->args->t_eat);
 	philo->n_meals += 1;
-	sem_post(philo->args->semaphores->forks);
-	sem_post(philo->args->semaphores->forks);
+	sem_post(philo->args->sm->forks);
+	sem_post(philo->args->sm->forks);
 }
 
 void	start_sleep(t_philo *philo)

@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/27 02:35:36 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/05/09 10:58:03 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/05/12 20:16:44 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ typedef struct g_args
 	int 		l_meal;
 	int			sim_over;
 	pid_t		*childs;
-	t_sem		*semaphores;
+	t_sem		*sm;
 }	t_args;
 
 
@@ -53,6 +53,7 @@ typedef struct g_philo
 	long			last_meal_time;
 	long long		starting_t;
 	pthread_t		thread;
+	bool			finish_meals;
 	t_args			*args;
 }	t_philo;
 
@@ -66,8 +67,6 @@ int	b_init(t_args **args, char **av);
 int	create_forks(t_args *args);
 int	create_philosophers(t_args *args, t_philo *philo);
 int	kill_childs(int *pids, int N);
-void	wait_process(t_args	*arguments);
-// void	free_tab(char **tab);
-void	p_error();
+void	wait_process(t_args	*arguments, int *pids);
 
 #endif

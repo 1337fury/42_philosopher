@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/17 19:20:19 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/05/09 11:43:47 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/05/10 15:54:28 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,8 +81,8 @@ void	put_msg(t_philo *philo, char *status)
 {
 	long long curr_t;
 	
-	sem_wait(philo->args->semaphores->print);
+	sem_wait(philo->args->sm->print);
 	curr_t = b_current_time();
 	printf("%lld %d %s\n",(curr_t - philo->starting_t), philo->id, status);
-	sem_post(philo->args->semaphores->print);
+	sem_post(philo->args->sm->print);
 }
