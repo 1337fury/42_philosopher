@@ -16,7 +16,7 @@ SRCS_NAME = \
 	init.c \
 	create_all.c \
 	wait_kill.c \
-	errors.c
+	print_error.c
 
 B_OBJS_NAME = $(SRCS_NAME:.c=.o)
 

@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:16:55 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/04/10 17:31:17 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/05/13 16:59:35 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int	init_all(t_args **args, t_list **list, char **av)
 		(*args)->l_meal = ft_atoi(av[5]);
 	else
 		(*args)->l_meal = -1;
-	if ((*args)->n_philos == -2 || (*args)->t_die == -2 || (*args)->t_eat == -2 
-			|| (*args)->t_sleep == -2 || (*args)->l_meal == -2)
+	if ((*args)->n_philos == -2 || (*args)->t_die == -2 || (*args)->t_eat == -2
+		|| (*args)->t_sleep == -2 || (*args)->l_meal == -2)
 		return (print_error((t_args *)*args));
 	(*args)->sim_over = false;
 	*list = create_list(*args);

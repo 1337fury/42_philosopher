@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/31 01:55:38 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/03/31 01:56:07 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/05/16 13:02:38 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	destroy(t_list **philos, t_args *args)
 
 	i = -1;
 	curr = (*philos)->head;
-	while(curr && ++i < args->n_philos)
+	while (curr && ++i < args->n_philos)
 	{
 		pthread_mutex_destroy(&curr->fork_l);
 		curr = curr->next;
@@ -29,4 +29,5 @@ void	destroy(t_list **philos, t_args *args)
 	curr = (*philos)->head;
 	ft_lstclear(&curr, args->n_philos);
 	free(args);
+	free(*philos);
 }

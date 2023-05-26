@@ -6,7 +6,7 @@
 /*   By: abdeel-o < abdeel-o@student.1337.ma>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 17:17:00 by abdeel-o          #+#    #+#             */
-/*   Updated: 2023/04/17 20:26:14 by abdeel-o         ###   ########.fr       */
+/*   Updated: 2023/05/13 15:54:17 by abdeel-o         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,5 @@ void	put_msg(t_philo *philo, char *status)
 	curr_t = current_time();
 	pthread_mutex_lock(&philo->args->prnt_protect);
 	printf("%lld %d %s\n", (curr_t - philo->starting_t), philo->id, status);
-	// if (!ft_strcmp("is died", status))
-		pthread_mutex_unlock(&philo->args->prnt_protect);
+	pthread_mutex_unlock(&philo->args->prnt_protect);
 }
