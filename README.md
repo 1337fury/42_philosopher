@@ -52,7 +52,7 @@ Follow these steps to install and run the 42 Philosopher Project:
 1. Clone the project repository:
 
    ```
-   git clone https://github.com/your_username/42-philosopher-project.git](https://github.com/1337fury/42_philosopher.git
+   git clone https://github.com/1337fury/42_philosopher.git
    ```
 
 2. Navigate to the project directory:
