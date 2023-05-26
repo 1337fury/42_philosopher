@@ -113,4 +113,4 @@ If you encounter any issues while running the 42 Philosopher Project, consider t
 - Verify that you are using the correct command to compile and execute the project.
 
 ---
-We hope you enjoy working with the 42 Philosopher Project! If you have any questions or suggestions, please don't hesitate to contact me. Happy coding!
+I hope you enjoy working with the 42 Philosopher Project! If you have any questions or suggestions, please don't hesitate to contact me. Happy coding!
