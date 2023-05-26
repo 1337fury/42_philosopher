@@ -1,5 +1,5 @@
-# 42_philosopher
-The `42 Philosopher` Project is an engaging programming challenge that simulates a round table of philosophers who alternate between eating, thinking, and sleeping. The simulation is set up with a large bowl of spaghetti in the middle of the table, and forks placed around it for the philosophers to use.
+# Dining philosophers problem
+The `Dining philosophers problem` Project is an engaging programming challenge that simulates a round table of philosophers who alternate between eating, thinking, and sleeping. The simulation is set up with a large bowl of spaghetti in the middle of the table, and forks placed around it for the philosophers to use.
 
 The challenge involves writing a program that ensures that each philosopher has access to the two forks they need to eat, and that they do not starve or die. The program must take into account the time it takes for each philosopher to eat, sleep, and think, and must also handle the situation where a philosopher dies of starvation.
 
